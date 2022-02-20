@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nuevo Artista</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #artistaForm="ngForm" (ngSubmit)="insertarArtista(artistaForm)">
+    <ion-card>
+      <ion-card-content>
+        <ion-input
+          placeholder="Ingrese URL de la foto"
+          class="input"
+          type="text"
+          [(ngModel)]="artista.imagen"
+          #imagen="ngModel"
+          name="imagen"
+        ></ion-input>
+        <ion-input
+          placeholder="Ingrese nombre"
+          class="input"
+          type="text"
+          [(ngModel)]="artista.nombre"
+          #nombre="ngModel"
+          name="nombre"
+        ></ion-input>
+        <ion-input
+          placeholder="Ingrese la edad"
+          class="input"
+          type="text"
+          [(ngModel)]="artista.edad"
+          #edad="ngModel"
+          name="edad"
+        ></ion-input>
+        <ion-input
+          placeholder="Ingrese la nacionalidad"
+          class="input"
+          type="text"
+          [(ngModel)]="artista.nacionalidad"
+          #nacionalidad="ngModel"
+          name="nacionalidad"
+        ></ion-input>
+        <ion-input
+          placeholder="Ingrese # de seguidores"
+          class="input"
+          type="text"
+          [(ngModel)]="artista.seguidores"
+          #seguidores="ngModel"
+          name="seguidores"
+        ></ion-input>
+        <ion-input
+          placeholder="Ingrese URL del video"
+          class="input"
+          type="text"
+          [(ngModel)]="artista.video"
+          #video="ngModel"
+          name="video"
+        ></ion-input>
+        <ion-textarea
+          placeholder="Ingrese una breve reseña"
+          class="input"
+          type="text"
+          [(ngModel)]="artista.resena"
+          #resena="ngModel"
+          name="resena"
+          rows="6"
+        ></ion-textarea>
+      </ion-card-content>
+      <div style="display: flex; justify-content: center">
+        <ion-button type="submit" color="spotify">Añadir</ion-button>
+      </div>
+    </ion-card>
+  </form>
+</ion-content>

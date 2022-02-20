@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="spotify">
+    <ion-buttons slot="start"
+      ><ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title><ion-icon name="musical-notes"></ion-icon> Music App </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col
+        size="6"
+        *ngFor="let ol of listaAlbums"
+        [routerLink]="['/albums/', ol._id]"
+      >
+        <ion-card style="height: 100%">
+          <ion-card-header>
+            <img [src]="ol.imagen" />
+          </ion-card-header>
+          <ion-card-content>
+            <h1 style="color: white">{{ol.nombre}}</h1>
+            <h3 style="color: rgb(143, 143, 143)">Autor: {{ol.autor}}</h3>
+            <h3 style="color: rgb(143, 143, 143)">
+              Lanzamiento: {{ol.lanzamiento }}
+            </h3>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button
+      color="success"
+      [routerLink]="['./insertar-album']"
+      type="button"
+    >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

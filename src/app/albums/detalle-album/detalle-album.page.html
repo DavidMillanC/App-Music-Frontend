@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar color="spotify-black">
+    <ion-title>{{album.nombre}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/albums"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary" slot="end">
+      <ion-button color="success" (click)="presentModalEdit()">
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary" slot="end">
+      <ion-button color="danger" (click)="eliminarAlbum()">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col>
+      <ion-card><ion-img [src]="album.imagen"></ion-img></ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <h1 style="padding-left: 30px; margin: 0">{{album.nombre}}</h1>
+    </ion-col>
+    <ion-col style="padding-left: 30px">
+      <ion-card-title style="font-weight: bold">
+        Autor:
+        <ion-label style="font-weight: normal"
+          >{{album.autor}}</ion-label
+        ></ion-card-title
+      >
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col style="padding-left: 30px; margin: 0">
+      <ion-card-title style="font-weight: bold">
+        Fecha de Lanzamiento:
+        <ion-label style="font-weight: normal"
+          >{{album.lanzamiento}}</ion-label
+        ></ion-card-title
+      >
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="margin-bottom: 20px">
+    <ion-col>
+      <h1 class="ion-text-center">
+        <ion-icon name="radio"></ion-icon> Lista de canciones
+      </h1>
+
+      <ion-list *ngFor="let music of musica; index as i">
+        <ion-row>
+          <ion-col>
+            <p>{{i+1}}. {{music.name}}</p>
+          </ion-col>
+
+          <ion-col>
+            <audio controls style="width: 100%">
+              <source type="audio/mpeg" [src]="music.url" />
+            </audio>
+          </ion-col>
+          <ion-item style="padding: 0%">
+            <ion-button color="success" (click)="presentModalEditMusic(i)">
+              <ion-icon name="create-outline"></ion-icon>
+            </ion-button>
+            <ion-button color="danger" (click)="eliminarMusic(i)">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-row>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button
+      color="success"
+      (click)="presentModalAggMusic()"
+      type="button"
+    >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

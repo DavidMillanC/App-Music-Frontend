@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nueva Música</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/albums"
+        (click)="cerrar()"
+      ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #musicForm="ngForm" (ngSubmit)="insertarMusic(musicForm)">
+    <ion-card>
+      <ion-card-content>
+        <ion-input
+          placeholder="Ingrese nombre de la música"
+          class="input"
+          type="text"
+          [(ngModel)]="music.name"
+          #name="ngModel"
+          name="name"
+        ></ion-input>
+        <ion-input
+          placeholder="Ingrese URL de la música"
+          class="input"
+          type="text"
+          [(ngModel)]="music.url"
+          #url="ngModel"
+          name="url"
+        ></ion-input>
+
+        <div style="display: flex; justify-content: center">
+          <ion-button type="submit" color="spotify">Añadir</ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>

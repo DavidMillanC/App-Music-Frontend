@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nuevo Album</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #albumForm="ngForm" (ngSubmit)="insertarAlbum(albumForm)">
+    <ion-card>
+      <ion-card-content>
+        <ion-input
+          placeholder="Ingrese URL de la foto"
+          class="input"
+          type="text"
+          [(ngModel)]="album.imagen"
+          #imagen="ngModel"
+          name="imagen"
+        ></ion-input>
+        <ion-input
+          placeholder="Ingrese nombre del album"
+          class="input"
+          type="text"
+          [(ngModel)]="album.nombre"
+          #nombre="ngModel"
+          name="nombre"
+        ></ion-input>
+        <ion-input
+          placeholder="Ingrese el autor del album"
+          class="input"
+          type="text"
+          [(ngModel)]="album.autor"
+          #autor="ngModel"
+          name="autor"
+        ></ion-input>
+        <ion-item button="true" id="open-date-input">
+          <ion-label>Fecha de Lanzamiento</ion-label>
+          <ion-text
+            slot="end"
+            [(ngModel)]="album.lanzamiento"
+            #lanzamiento="ngModel"
+            name="lanzamiento"
+            >{{album.lanzamiento | date:'yyyy-MM-dd'}}</ion-text
+          >
+          <ion-popover trigger="open-date-input" show-backdrop="false">
+            <ng-template>
+              <ion-datetime
+                presentation="date"
+                (ionChange)="obtenerFecha($event)"
+              ></ion-datetime>
+            </ng-template>
+          </ion-popover>
+        </ion-item>
+
+        <div style="display: flex; justify-content: center">
+          <ion-button type="submit" color="spotify">Añadir</ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>

@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edición - {{music.name}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="cerrar()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section>
+    <form #musicForm="ngForm" (ngSubmit)="editarMusic(musicForm)">
+      <ion-card>
+        <ion-item>
+          <ion-label position="floating">Nombre:</ion-label>
+          <ion-input
+            class="input"
+            type="text"
+            [(ngModel)]="music.name"
+            #name="ngModel"
+            name="name"
+            clearInput
+            value="{{music.name}}"
+          ></ion-input>
+        </ion-item>
+      </ion-card>
+      <ion-card>
+        <ion-item>
+          <ion-label position="floating">URL de la canción</ion-label>
+          <ion-input
+            class="input"
+            type="text"
+            [(ngModel)]="music.url"
+            #url="ngModel"
+            name="url"
+            clearInput
+            value="{{music.url}}"
+          ></ion-input>
+        </ion-item>
+      </ion-card>
+
+      <div style="display: flex; justify-content: center">
+        <ion-button type="submit" color="spotify">Actualizar</ion-button>
+      </div>
+    </form>
+  </section>
+</ion-content>
