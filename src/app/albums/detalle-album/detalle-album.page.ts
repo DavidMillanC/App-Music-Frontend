@@ -28,6 +28,7 @@ export class DetalleAlbumPage implements OnInit {
     this.getByIdAlbum();
     this.getMusicaByAlbumId();
   }
+
   getByIdAlbum() {
     this.actRoute.paramMap.subscribe((paramMap) => {
       const id = paramMap.get('albumId');
@@ -117,6 +118,7 @@ export class DetalleAlbumPage implements OnInit {
     });
     await alert.present();
   }
+
   async eliminarMusic(num) {
     const alert = await this.ocont.create({
       header: 'Eliminar Música',

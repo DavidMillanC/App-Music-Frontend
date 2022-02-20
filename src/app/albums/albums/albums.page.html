@@ -20,11 +20,16 @@
             <img [src]="ol.imagen" />
           </ion-card-header>
           <ion-card-content>
-            <h1 style="color: white">{{ol.nombre}}</h1>
-            <h3 style="color: rgb(143, 143, 143)">Autor: {{ol.autor}}</h3>
-            <h3 style="color: rgb(143, 143, 143)">
-              Lanzamiento: {{ol.lanzamiento }}
-            </h3>
+            <ion-card-title style="color: white">
+              {{ol.nombre}}
+            </ion-card-title>
+            <h2 style="color: rgb(201, 201, 201); padding-top: 1px">
+              {{ol.autor}}
+            </h2>
+            <div style="padding-top: 1px">
+              <h3 style="color: rgb(219, 219, 219)">Lanzamiento:</h3>
+              <h3 style="color: rgb(219, 219, 219)">{{ol.lanzamiento}}</h3>
+            </div>
           </ion-card-content>
         </ion-card>
       </ion-col>

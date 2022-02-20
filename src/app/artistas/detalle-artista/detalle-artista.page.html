@@ -18,81 +18,133 @@
 </ion-header>
 
 <ion-content>
-  <ion-row>
-    <ion-col>
-      <ion-card><ion-img [src]="artista.imagen"></ion-img></ion-card>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <h1 style="padding-left: 30px; margin: 0">{{artista.nombre}}</h1>
-    </ion-col>
-    <ion-col style="padding-left: 30px">
-      <ion-card-title style="font-weight: bold">
-        Edad:
-        <ion-label style="font-weight: normal"
-          >{{artista.edad}} años</ion-label
-        ></ion-card-title
-      >
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col style="padding-left: 30px">
-      <ion-card-title style="font-weight: bold">
-        <ion-label style="font-weight: normal; padding-left: 5px"
-          >{{artista.seguidores}} seguidores</ion-label
-        ></ion-card-title
-      >
-    </ion-col>
-    <ion-col style="padding-left: 10px">
-      <ion-card-title style="font-weight: bold">
-        Nacionalidad:
-        <ion-label style="font-weight: normal"
-          >{{artista.nacionalidad}}</ion-label
-        ></ion-card-title
-      >
-    </ion-col>
-  </ion-row>
-  <ion-row style="padding-left: 30px; padding-right: 30px; margin: 0%">
-    <iframe
-      width="560"
-      height="315"
-      [src]="artista.video | safe: 'resourceUrl'"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>
-  </ion-row>
-  <ion-row style="padding-left: 30px; padding-right: 30px; margin: 0">
-    <ion-col style="padding-left: 10px">
-      <ion-card-title style="font-weight: bold"> Reseña: </ion-card-title>
-      <ion-textarea style="text-align: justify" disabled
-        >{{artista.resena}}</ion-textarea
-      >
-    </ion-col>
-  </ion-row>
-
   <ion-grid fixed>
-    <ion-card-title style="font-weight: bold; padding-left: 30px">
-      Álbumes
-    </ion-card-title>
     <ion-row>
-      <ion-col
-        size="6"
-        *ngFor="let ol of albums"
-        [routerLink]="['/albums/', ol._id]"
-      >
-        <ion-card style="height: 100%">
-          <ion-card-header>
-            <img [src]="ol.imagen" />
-          </ion-card-header>
+      <ion-col size="12">
+        <ion-card>
+          <ion-img [src]="artista.imagen"> </ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12">
+        <ion-card>
           <ion-card-content>
-            <h1 style="color: white">{{ol.nombre}}</h1>
-            <h3 style="color: rgb(143, 143, 143)">Autor: {{ol.autor}}</h3>
-            <h3 style="color: rgb(143, 143, 143)">
-              Lanzamiento: {{ol.lanzamiento }}
-            </h3>
+            <ion-row>
+              <ion-col size="6">
+                <ion-card-title style="color: white; font-weight: bold">
+                  {{artista.nombre}}
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-title style="color: white; font-weight: bold">
+                  Edad:
+                  <ion-label
+                    style="
+                      font-weight: normal;
+                      color: rgba(255, 255, 255, 0.705);
+                      padding-left: 5px;
+                    "
+                  >
+                    {{artista.edad}} años
+                  </ion-label>
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-title style="color: white; font-weight: normal">
+                  {{artista.seguidores}} seguidores
+                </ion-card-title>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-title style="color: white; font-weight: bold">
+                  Nacionalidad:
+                  <ion-label
+                    style="
+                      font-weight: normal;
+                      color: rgba(255, 255, 255, 0.705);
+                    "
+                  >
+                    {{artista.nacionalidad}}
+                  </ion-label>
+                </ion-card-title>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="12">
+                <iframe
+                  style="width: 100%"
+                  height="400px"
+                  frameborder="0"
+                  scrolling="no"
+                  [src]="artista.video | safe: 'resourceUrl'"
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </ion-col>
+              <hr />
+              <ion-col size="12">
+                <ion-card-title style="color: white; font-weight: bold">
+                  Reseña:
+                </ion-card-title>
+                <ion-card-subtitle
+                  style="
+                    font-weight: normal;
+                    color: rgba(255, 255, 255, 0.705);
+                    text-align: justify;
+                    font-size: 16px;
+                    padding-top: 10px;
+                  "
+                >
+                  {{artista.resena}}
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="12">
+                <h1 style="font-weight: bold" style="color: white">Álbumes</h1>
+              </ion-col>
+              <hr />
+              <ion-col
+                size="6"
+                *ngFor="let ol of albums"
+                [routerLink]="['/albums/', ol._id]"
+              >
+                <ion-card
+                  style="height: 100%; background-color: rgb(41, 41, 41)"
+                >
+                  <ion-card-header>
+                    <img [src]="ol.imagen" />
+                  </ion-card-header>
+                  <ion-card-content>
+                    <ion-card-title style="color: white">
+                      {{ol.nombre}}
+                    </ion-card-title>
+                    <h2 style="color: rgb(201, 201, 201); padding-top: 1px">
+                      {{ol.autor}}
+                    </h2>
+                    <div style="padding-top: 1px">
+                      <h3 style="color: rgb(219, 219, 219)">Lanzamiento:</h3>
+                      <h3 style="color: rgb(219, 219, 219)">
+                        {{ol.lanzamiento}}
+                      </h3>
+                    </div>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
           </ion-card-content>
         </ion-card>
       </ion-col>
